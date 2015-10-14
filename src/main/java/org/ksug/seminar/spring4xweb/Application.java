@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RockingTheSpring4xWebApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(RockingTheSpring4xWebApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
