@@ -4,9 +4,10 @@ Spring 4.x Web application Overview
 > 최신 웹 트렌드에 대응하는 스프링 살펴보기
 
 # 1. 소개
-* 작성자: 김지헌([mailto:ihoneymon@gmail.com](ihoneymon@gmail.com)
+* 작성자: 김지헌(<ihoneymon@gmail.com>)
 * 발표일시: 2015/10/24(토)
 * Moden web applicatoin for Enterprise java
+	- <http://www.ksug.org/seminar/20151024/>
 
 # 2. 구성
 * JDK 1.8
