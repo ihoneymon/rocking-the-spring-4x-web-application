@@ -38,6 +38,9 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-hateoas"
     compile "org.springframework.boot:spring-boot-devtools"
     compile "org.projectlombok:lombok"
+    compile "com.jayway.jsonpath:json-path:2.0.0"
+    compile "com.jayway.jsonpath:json-path-assert:2.0.0"
+
     runtime "com.h2database:h2"
     testCompile "org.springframework.boot:spring-boot-starter-test" 
     testCompile "org.springframework.restdocs:spring-restdocs-mockmvc:1.0.0.RC1"
