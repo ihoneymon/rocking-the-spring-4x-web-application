@@ -1,0 +1,4 @@
+logging:
+  level:
+    org.ksug.seminar.spring4xweb: DEBUG
+    org.springframework.web: DEBUG

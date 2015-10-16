@@ -1,10 +1,13 @@
 package org.ksug.seminar.spring4xweb.general;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -37,8 +40,13 @@ public class TypicalController {
     }
 
     @RequestMapping("/occur-exception")
-    public String occurException() {
-        throw new IllegalStateException("nothing");
+    public String occurIllegalStateException() {
+        throw new IllegalStateException("illegalStateException");
+    }
+    
+    @RequestMapping("/handle-global-exception")
+    public String handleGlobalException() throws Exception {
+        throw new Exception("exception");
     }
 
     @ExceptionHandler(IllegalStateException.class)

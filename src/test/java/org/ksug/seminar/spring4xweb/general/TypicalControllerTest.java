@@ -53,9 +53,16 @@ public class TypicalControllerTest {
     }
 
     @Test
-    public void testOccurException() throws Exception {
+    public void testOccurIllegalStateException() throws Exception {
         mockMvc.perform(get("/occur-exception")).andExpect(handler().handlerType(TypicalController.class))
-                .andExpect(handler().methodName("occurException")).andExpect(status().isOk())
+                .andExpect(handler().methodName("occurIllegalStateException")).andExpect(status().isOk())
                 .andExpect(content().string("IllegalStateException handle!!"));
+    }
+
+    @Test
+    public void testHandleExceptionByController() throws Exception {
+        mockMvc.perform(get("/handle-global-exception")).andExpect(handler().handlerType(TypicalController.class))
+                .andExpect(handler().methodName("handleGlobalException")).andExpect(model().attributeExists("url"))
+                .andExpect(model().attributeExists("message"));
     }
 }
