@@ -2,14 +2,16 @@ package org.ksug.seminar.spring4xweb.v41;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
-import java.util.Date;
 import java.util.Optional;
 
-import org.ksug.seminar.spring4xweb.general.TypicalController.HelloWorld;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.util.UriComponents;
 /**
  * {@link ResponseEntity}, {@link RequestEntity} buider-style 적용
  * {@link RequestParam}에 대한 {@link Optional} 적용
+ * 
  * @author honeymon
  *
  */
@@ -35,7 +38,7 @@ public class FourPointOneController {
     public ResponseEntity ok() {
         return ResponseEntity.ok().build();
     }
-    
+
     @ModelAttribute("rest")
     public Rest rest() {
         return new Rest("v41");
@@ -54,6 +57,21 @@ public class FourPointOneController {
     @RequestMapping(value = "/{id}", method = GET)
     public ResponseEntity getRest(@PathVariable Long id) {
         return ResponseEntity.ok(repository.findOne(id));
+    }
+
+    @ModelAttribute
+    @RequestMapping(value = "/model-attribtue")
+    public void addModelAttribtue(@RequestParam Optional<String> input, Model model) {
+        input.ifPresent(value -> model.addAttribute("input", input));
+    }
+    
+    @RequestMapping(value="/model-attribute/method-argument")
+    public ResponseEntity useMethodArgument(@ModelAttribute("rest") Rest rest, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        } else {
+            return ResponseEntity.ok(rest);
+        }
     }
 
     @RequestMapping(value = "/optional", method = GET, produces = MediaType.TEXT_PLAIN_VALUE)

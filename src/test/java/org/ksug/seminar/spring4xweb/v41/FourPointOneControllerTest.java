@@ -1,12 +1,14 @@
 package org.ksug.seminar.spring4xweb.v41;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import java.time.LocalDate;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
@@ -70,8 +73,26 @@ public class FourPointOneControllerTest {
     @Test
     public void test메서드에선언된ModelAttribute() throws Exception {
         // given
-        Rest saveRest = repository.save(new Rest("modelAttribute: method"));
-
-        mockMvc.perform(get("/v41/" + saveRest.getId())).andExpect(status().is2xxSuccessful());
+        mockMvc.perform(get("/v41//model-attribtue")).andExpect(status().is2xxSuccessful())
+                .andExpect(model().attribute("rest", is(notNullValue())));
     }
+
+    @Test
+    public void test메서드에선언된ModelAttribute_파라미터가존재하는경우() throws Exception {
+        mockMvc.perform(get("/v41//model-attribtue").param("input", "input")).andExpect(status().is2xxSuccessful())
+                .andExpect(model().attribute("rest", is(notNullValue())))
+                .andExpect(model().attribute("input", is(notNullValue())));
+    }
+
+    /**
+     * 아무런설정도 하지 않은 {@link Rest} 를 {@link Valid}로 검증시 결함이 있을 경우
+     * {@link HttpStatus#BAD_REQUEST} 처리
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testModelAttribute를_메서드인자로_선언한_것에_대한검증확인() throws Exception {
+        mockMvc.perform(get("/v41/model-attribute/method-argument")).andExpect(status().is2xxSuccessful());
+    }
+
 }

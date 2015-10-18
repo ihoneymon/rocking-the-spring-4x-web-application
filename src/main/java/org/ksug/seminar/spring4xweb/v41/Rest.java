@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.util.Assert;
 
 @Entity
@@ -25,6 +26,7 @@ public class Rest implements Serializable {
     @GeneratedValue
     private Long id;
 
+    @NotBlank
     private String name;
 
     public Rest(String name) {
