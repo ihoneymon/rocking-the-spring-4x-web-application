@@ -1,5 +1,7 @@
 package org.ksug.seminar.spring4xweb.v40;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NewRestController {
 
     @RequestMapping
-    public RestHelloWorld helloRestController() {
+    public RestHelloWorld helloRestController(HttpServletRequest request) {
         return new RestHelloWorld("Hello", "KSUG");
     }
 
