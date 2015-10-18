@@ -1,7 +1,7 @@
 package org.ksug.seminar.spring4xweb.general;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -64,5 +64,6 @@ public class TypicalControllerTest {
         mockMvc.perform(get("/handle-global-exception")).andExpect(handler().handlerType(TypicalController.class))
                 .andExpect(handler().methodName("handleGlobalException")).andExpect(model().attributeExists("url"))
                 .andExpect(model().attributeExists("message"));
+        ;
     }
 }

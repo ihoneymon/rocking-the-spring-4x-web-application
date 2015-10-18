@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @ControllerAdvice
-public class BeforeGlobalDefaultExceptionHandler {
+public class BeforeGlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ModelAndView defaultErorHandler(HttpServletRequest req, Exception e) throws Exception {
@@ -23,7 +23,7 @@ public class BeforeGlobalDefaultExceptionHandler {
             throw e;
         }
 
-        ModelAndView mav = new ModelAndView("error");
+        ModelAndView mav = new ModelAndView("/error/default.html");
         mav.addObject("url", req.getRequestURI());
         mav.addObject("message", e.getMessage());
         return mav;

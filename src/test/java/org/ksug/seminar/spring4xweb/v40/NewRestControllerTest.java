@@ -1,6 +1,5 @@
 package org.ksug.seminar.spring4xweb.v40;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
@@ -12,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.ksug.seminar.spring4xweb.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,11 +35,14 @@ public class NewRestControllerTest {
 
     @Test
     public void testHelloRestController() throws Exception {
-        mockMvc.perform(get("/rest"))
-        .andExpect(handler().handlerType(NewRestController.class))
-                .andExpect(handler().methodName("helloRestController"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.comment", is("Hello")))
-                .andExpect(jsonPath("$.target", is("KSUG")));
+        mockMvc.perform(get("/rest")).andExpect(handler().handlerType(NewRestController.class))
+                .andExpect(handler().methodName("helloRestController")).andExpect(status().isOk())
+                .andExpect(jsonPath("$.comment", is("Hello"))).andExpect(jsonPath("$.target", is("KSUG")));
+    }
+
+    @Test
+    public void testOccurException() throws Exception {
+        mockMvc.perform(get("/rest/occur-exception")).andExpect(handler().handlerType(NewRestController.class))
+                .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
 }

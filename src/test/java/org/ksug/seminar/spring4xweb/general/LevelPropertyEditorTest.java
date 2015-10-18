@@ -1,7 +1,7 @@
 package org.ksug.seminar.spring4xweb.general;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
