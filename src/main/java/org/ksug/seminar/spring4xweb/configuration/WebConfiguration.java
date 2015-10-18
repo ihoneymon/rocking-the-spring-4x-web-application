@@ -23,9 +23,9 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/error/default").setViewName("error/default");
-        registry.addViewController("/error/400").setViewName("error/400");
-        registry.addViewController("/error/404").setViewName("error/404");
+        registry.addViewController("/error/default").setViewName("static/templates/error/default.html");
+        registry.addViewController("/error/400").setViewName("static/templates/error/400.html");
+        registry.addViewController("/error/404").setViewName("static/templates/error/404.html");
     }
 
     /**

@@ -33,7 +33,7 @@ public class TypicalController {
     }
 
     @RequestMapping("/")
-    public String helloWorld(@ModelAttribute HelloWorld helloWorld) {
+    public @ResponseBody String helloWorld(@ModelAttribute HelloWorld helloWorld) {
         return String.format("%s, %s", helloWorld.getComment(), helloWorld.getName());
     }
 

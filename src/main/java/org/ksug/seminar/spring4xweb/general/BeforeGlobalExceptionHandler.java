@@ -23,7 +23,7 @@ public class BeforeGlobalExceptionHandler {
             throw e;
         }
 
-        ModelAndView mav = new ModelAndView("/error/default.html");
+        ModelAndView mav = new ModelAndView("/static/templates/error/default.html");
         mav.addObject("url", req.getRequestURI());
         mav.addObject("message", e.getMessage());
         return mav;

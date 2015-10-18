@@ -32,8 +32,7 @@ public class PostJsonControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
-                .alwaysExpect(handler().handlerType(PostJsonController.class)).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print()).build();
     }
 
     /**
@@ -43,7 +42,7 @@ public class PostJsonControllerTest {
      */
     @Test
     public void testPostJsonRequestMappingMetaAnnotationUse() throws Exception {
-        mockMvc.perform(post("/v42/post-json").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(post("/v42/post-json").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().is(HttpStatus.CREATED.value())).andExpect(jsonPath("$.name", is("KSUG")));
     }
 }
