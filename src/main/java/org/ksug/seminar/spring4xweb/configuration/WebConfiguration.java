@@ -25,7 +25,7 @@ public class WebConfiguration extends WebMvcAutoConfigurationAdapter {
     }
 
     /**
-     * Path Matching
+     * Path Matching v4.0.3
      */
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
