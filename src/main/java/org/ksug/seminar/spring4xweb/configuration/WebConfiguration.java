@@ -18,4 +18,5 @@ public class WebConfiguration extends WebMvcAutoConfigurationAdapter {
         registry.addViewController("/error/400").setViewName("error/400");
         registry.addViewController("/error/404").setViewName("error/404");
     }
+
 }
