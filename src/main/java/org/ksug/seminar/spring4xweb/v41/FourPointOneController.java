@@ -61,8 +61,9 @@ public class FourPointOneController {
 
     @ModelAttribute
     @RequestMapping(value = "/model-attribtue")
-    public void addModelAttribtue(@RequestParam Optional<String> input, Model model) {
-        input.ifPresent(value -> model.addAttribute("input", input));
+    public ResponseEntity<Model> addModelAttribtue(@RequestParam Optional<String> input, Model model) {
+        input.ifPresent(value -> model.addAttribute("input", value));
+        return ResponseEntity.ok(model);
     }
     
     @RequestMapping(value="/model-attribute/method-argument")

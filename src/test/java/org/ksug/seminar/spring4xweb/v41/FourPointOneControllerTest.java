@@ -71,17 +71,16 @@ public class FourPointOneControllerTest {
     }
 
     @Test
-    public void test메서드에선언된ModelAttribute() throws Exception {
+    public void test메서드에선언된ModelAttribute_파라미터가없는경우() throws Exception {
         // given
         mockMvc.perform(get("/v41//model-attribtue")).andExpect(status().is2xxSuccessful())
-                .andExpect(model().attribute("rest", is(notNullValue())));
+                .andExpect(jsonPath("$.rest.name", is("v41")));
     }
 
     @Test
     public void test메서드에선언된ModelAttribute_파라미터가존재하는경우() throws Exception {
         mockMvc.perform(get("/v41//model-attribtue").param("input", "input")).andExpect(status().is2xxSuccessful())
-                .andExpect(model().attribute("rest", is(notNullValue())))
-                .andExpect(model().attribute("input", is(notNullValue())));
+                .andExpect(jsonPath("$.rest.name", is("v41"))).andExpect(jsonPath("$.input", is("input")));
     }
 
     /**
