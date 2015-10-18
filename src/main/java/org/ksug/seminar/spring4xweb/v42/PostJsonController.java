@@ -10,6 +10,6 @@ public class PostJsonController {
 
     @PostJson("/v42/post-json")
     public ResponseEntity postJson() {
-        return ResponseEntity.status(HttpStatus.CREATED).body(new HelloWorld("KSUG", "RequestMapping meta annotation"));
+        return ResponseEntity.ok(new HelloWorld("KSUG", "RequestMapping meta annotation"));
     }
 }

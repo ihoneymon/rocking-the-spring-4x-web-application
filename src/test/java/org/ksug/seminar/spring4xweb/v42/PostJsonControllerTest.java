@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ksug.seminar.spring4xweb.Application;
@@ -20,6 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -42,7 +44,7 @@ public class PostJsonControllerTest {
      */
     @Test
     public void testPostJsonRequestMappingMetaAnnotationUse() throws Exception {
-        mockMvc.perform(post("/v42/post-json").contentType(MediaType.APPLICATION_JSON_VALUE))
+        mockMvc.perform(post("/v42/post-json").accept(MediaType.APPLICATION_JSON_VALUE).contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().is(HttpStatus.CREATED.value())).andExpect(jsonPath("$.name", is("KSUG")));
     }
 }

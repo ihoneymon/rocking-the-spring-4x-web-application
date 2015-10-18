@@ -35,16 +35,16 @@ public class FourPointZeroTest {
 
     @Test
     public void testErrorDefault() throws Exception {
-        mockMvc.perform(post("/error/default").contentType(MediaType.APPLICATION_JSON)).andExpect(view().name(is("static/templates/error/default.html")));
+        mockMvc.perform(post("/error/default")).andExpect(view().name(is("static/templates/error/default.html")));
     }
 
     @Test
     public void testError400() throws Exception {
-        mockMvc.perform(post("/error/400").contentType(MediaType.APPLICATION_JSON)).andExpect(view().name(is("static/templates/error/400.html")));
+        mockMvc.perform(post("/error/400")).andExpect(view().name(is("static/templates/error/400.html")));
     }
 
     @Test
     public void testError404() throws Exception {
-        mockMvc.perform(post("/error/404").contentType(MediaType.APPLICATION_JSON)).andExpect(view().name(is("static/templates/error/404.html")));
+        mockMvc.perform(post("/error/404")).andExpect(view().name(is("static/templates/error/404.html")));
     }
 }
