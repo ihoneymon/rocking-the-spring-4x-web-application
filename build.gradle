@@ -40,6 +40,7 @@ dependencies {
     compile "org.projectlombok:lombok"
     compile "com.jayway.jsonpath:json-path:2.0.0"
     compile "com.jayway.jsonpath:json-path-assert:2.0.0"
+	compile 'com.google.guava:guava:19.0-rc2'
 
     runtime "com.h2database:h2"
     testCompile "org.springframework.boot:spring-boot-starter-test" 
