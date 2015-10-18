@@ -28,12 +28,12 @@ public class OccurExceptionControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
+                .alwaysExpect(handler().handlerType(OccurExceptionController.class)).build();
     }
 
     @Test
     public void testOccurException() throws Exception {
-        mockMvc.perform(get("/v40/occur-exception/package")).andExpect(
-                handler().handlerType(OccurExceptionController.class));
+        mockMvc.perform(get("/v40/occur-exception/package"));
     }
 }

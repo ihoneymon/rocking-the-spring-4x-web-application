@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author honeymon
  *
  */
-@ControllerAdvice(basePackages = { "org.ksug.seminar.spring4xweb.v40.advice" })
+@ControllerAdvice(basePackages = { "org.ksug.seminar.spring4xweb.v40.controlleradvice" })
 public class PackageExceptionHandler {
 
     @ExceptionHandler(Exception.class)

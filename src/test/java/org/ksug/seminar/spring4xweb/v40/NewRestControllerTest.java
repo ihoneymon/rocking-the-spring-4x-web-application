@@ -39,7 +39,7 @@ public class NewRestControllerTest {
         mockMvc.perform(get("/rest")).andExpect(handler().handlerType(NewRestController.class))
                 .andExpect(handler().methodName("helloRestController")).andExpect(status().isOk())
                 .andExpect(jsonPath("$.comment", is("Hello"))).andExpect(jsonPath("$.target", is("KSUG")))
-                .andExpect(header().string("response-header", is("KSUG")));
+                .andExpect(header().string("KSUG", is("Modern Java web application with Spring")));
     }
 
     /**

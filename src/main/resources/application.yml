@@ -1,3 +1,6 @@
+spring:
+  mvc:
+    date-format: yyyy-MM-dd
 logging:
   level:
     org.ksug.seminar.spring4xweb: DEBUG

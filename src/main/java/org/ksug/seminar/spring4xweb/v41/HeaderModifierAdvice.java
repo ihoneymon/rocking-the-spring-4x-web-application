@@ -21,7 +21,7 @@ public class HeaderModifierAdvice implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
             Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request,
             ServerHttpResponse response) {
-        response.getHeaders().add("response-header", "KSUG");
+        response.getHeaders().add("KSUG", "Modern Java web application with Spring");
         return body;
     }
 
