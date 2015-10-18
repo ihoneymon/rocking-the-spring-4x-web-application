@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import org.ksug.seminar.spring4xweb.general.BeforeGlobalExceptionHandler.GlobalException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -42,8 +43,8 @@ public class TypicalController {
     }
     
     @RequestMapping("/handle-global-exception")
-    public String handleGlobalException() throws Exception {
-        throw new Exception("exception");
+    public String handleGlobalException() throws GlobalException {
+        throw new GlobalException("exception");
     }
 
     @ExceptionHandler(IllegalStateException.class)

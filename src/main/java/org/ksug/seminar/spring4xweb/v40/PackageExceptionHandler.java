@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author honeymon
  *
  */
-@ControllerAdvice(basePackages = { "org.ksug.seminar.spring4xweb.v40" })
+@ControllerAdvice(basePackages = { "org.ksug.seminar.spring4xweb.v40.advice" })
 public class PackageExceptionHandler {
 
     @ExceptionHandler(Exception.class)
@@ -20,6 +20,7 @@ public class PackageExceptionHandler {
         ModelAndView mav = new ModelAndView("/error/default.html");
         mav.addObject("url", req.getRequestURI());
         mav.addObject("message", e.getMessage());
+        mav.addObject("handler", this.getClass().getName());
         return mav;
     }
 }

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice(annotations = { RestController.class })
 public class RestControllerExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(RestControllerException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ApiError exception(Exception e, HttpServletRequest request) {
@@ -36,5 +36,11 @@ public class RestControllerExceptionHandler {
         private String url;
         private HttpStatus status;
         private String message;
+    }
+    
+    public static class RestControllerException extends Exception {
+        public RestControllerException(String msg) {
+            super(msg);
+        }
     }
 }
