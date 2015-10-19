@@ -4,8 +4,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;

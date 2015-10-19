@@ -4,6 +4,7 @@ import org.ksug.seminar.spring4xweb.general.TypicalController.HelloWorld;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class EchoController {
@@ -17,6 +18,11 @@ public class EchoController {
     @MessageMapping("/stomp/echo")
     @SendTo("/subscribe/echo")
     public HelloWorld helloWorld(HelloWorld hello) {
-        return new HelloWorld("Receive: " + hello.getName(), "Receive: " + hello.getComment());
+        return new HelloWorld(hello.getName(), "Hello, ");
+    }
+    
+    @RequestMapping("/echo")
+    public String echoView() {
+        return "static/templates/echo.html";
     }
 }

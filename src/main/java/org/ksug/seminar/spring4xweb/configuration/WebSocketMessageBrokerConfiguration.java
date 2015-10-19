@@ -16,6 +16,12 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 @EnableWebSocketMessageBroker
 public class WebSocketMessageBrokerConfiguration extends AbstractWebSocketMessageBrokerConfigurer {
 
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.setApplicationDestinationPrefixes("/app");
+        registry.enableSimpleBroker("/subscribe");
+    }
+
     /**
      * endpoint 설정
      */
@@ -24,9 +30,4 @@ public class WebSocketMessageBrokerConfiguration extends AbstractWebSocketMessag
         registry.addEndpoint("/stomp/echo").withSockJS();
     }
 
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.setApplicationDestinationPrefixes("/app");
-        registry.enableSimpleBroker("/subscribe");
-    }
 }
