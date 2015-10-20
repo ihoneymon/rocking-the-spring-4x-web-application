@@ -13,6 +13,11 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 @RequestMapping("/v42")
 public class StreamingResponseBodyController {
 
+    /**
+     * 파일전송시 유용할까??
+     * 
+     * @return
+     */
     @RequestMapping("/stream-events")
     public StreamingResponseBody handle() {
         return os -> {

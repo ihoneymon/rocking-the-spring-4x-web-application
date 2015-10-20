@@ -2,6 +2,7 @@ package org.ksug.seminar.spring4xweb.v42;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class HttpStreamingControllerTest {
+public class CacheControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -31,7 +32,9 @@ public class HttpStreamingControllerTest {
     }
 
     @Test
-    public void testResponseBodyEmmiter() throws Exception {
-        mockMvc.perform(get("/v42/events"));
+    public void testCacheControl() throws Exception {
+        mockMvc.perform(get("/v42/cache-control")).andExpect(
+                header().string("Cache-Control", "max-age=0, no-transform, public"));
     }
+
 }

@@ -1,7 +1,10 @@
 package org.ksug.seminar.spring4xweb.configuration;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.CacheControl;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -81,10 +84,12 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         if (!registry.hasMappingForPattern("/webjars/**")) {
-            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/resources/webjars/");
+            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/resources/webjars/")
+                    .setCacheControl(CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic());
         }
         if (!registry.hasMappingForPattern("/**")) {
-            registry.addResourceHandler("/**").addResourceLocations("classpath:/static");
+            registry.addResourceHandler("/**").addResourceLocations("classpath:/static")
+                    .setCacheControl(CacheControl.maxAge(0, TimeUnit.SECONDS).cachePublic());
         }
     }
 }

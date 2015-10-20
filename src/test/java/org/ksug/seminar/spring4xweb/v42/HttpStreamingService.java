@@ -9,7 +9,8 @@ public interface HttpStreamingService {
     /**
      * ResponseBodyEmitter는 다양한 객체를 비동기식으로 다룰 수 있다.
      * 
-     * @param emitter {@link ResponseBodyEmitter}
+     * @param emitter
+     *            {@link ResponseBodyEmitter}
      * @throws IOException
      * @throws InterruptedException
      */
