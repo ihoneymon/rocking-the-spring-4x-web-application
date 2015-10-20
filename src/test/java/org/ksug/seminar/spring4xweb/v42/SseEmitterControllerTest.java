@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.ksug.seminar.spring4xweb.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,6 +36,7 @@ public class SseEmitterControllerTest {
 
     @Test
     public void testSseEmitter() throws Exception {
-        mockMvc.perform(get("/v42/sse-events"));
+        mockMvc.perform(get("/v42/sse-events")).andExpect(content().contentType("text/event-stream"))
+                .andExpect(header().string("Content-Type", "text/event-stream"));
     }
 }

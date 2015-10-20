@@ -1,5 +1,7 @@
 package org.ksug.seminar.spring4xweb.v42;
 
+import static org.springframework.web.servlet.mvc.method.annotation.SseEmitter.*;
+
 import java.io.IOException;
 import java.util.Date;
 
@@ -18,9 +20,9 @@ public class SseEmitterController {
     @RequestMapping("/sse-events")
     public SseEmitter handle() throws IOException {
         SseEmitter sseEmitter = new SseEmitter();
-        sseEmitter.send(new Message("Hello, KSUG"));
-        sseEmitter.send(new Greeting("Hello, Honeymon"));
-        sseEmitter.send(new Date());
+        sseEmitter.send(event().name("message").data(new Message("Hello, KSUG")));
+        sseEmitter.send(event().name("greeting").data(new Greeting("Hello, Honeymon")));
+        sseEmitter.send(event().name("date").data(new Date()));
         sseEmitter.complete();
         return sseEmitter;
     }
