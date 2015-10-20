@@ -28,7 +28,7 @@ public class BeforeGlobalExceptionHandler {
         mav.addObject("message", e.getMessage());
         return mav;
     }
-    
+
     public static class GlobalException extends Exception {
         public GlobalException(String msg) {
             super(msg);

@@ -1,10 +1,15 @@
 package org.ksug.seminar.spring4xweb.v40;
 
 import org.ksug.seminar.spring4xweb.general.TypicalController.HelloWorld;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.config.AbstractMessageBrokerConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class EchoController {
@@ -20,7 +25,7 @@ public class EchoController {
     public HelloWorld helloWorld(HelloWorld hello) {
         return new HelloWorld(hello.getName(), "Hello, ");
     }
-    
+
     @RequestMapping("/echo")
     public String echoView() {
         return "static/templates/echo.html";

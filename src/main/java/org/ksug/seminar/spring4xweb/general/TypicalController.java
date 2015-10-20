@@ -41,7 +41,7 @@ public class TypicalController {
     public String occurIllegalStateException() {
         throw new IllegalStateException("illegalStateException");
     }
-    
+
     @RequestMapping("/handle-global-exception")
     public String handleGlobalException() throws GlobalException {
         throw new GlobalException("exception");

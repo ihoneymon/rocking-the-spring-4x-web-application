@@ -71,8 +71,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     public ScriptTemplateConfigurer scriptTemplateConfigurer() {
         ScriptTemplateConfigurer configurer = new ScriptTemplateConfigurer();
         configurer.setEngineName("nashorn");
-        configurer.setScripts("/static/js/polyfill.js",
-                "/META-INF/resources/webjars/handlebars/4.0.2/handlebars.js",
+        configurer.setScripts("/static/js/polyfill.js", "/META-INF/resources/webjars/handlebars/4.0.2/handlebars.js",
                 "/static/js/render.js");
         configurer.setRenderFunction("render");
         configurer.setSharedEngine(false);

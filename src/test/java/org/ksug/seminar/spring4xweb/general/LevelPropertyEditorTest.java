@@ -24,13 +24,13 @@ public class LevelPropertyEditorTest {
         // then
         assertThat(levelPropertyEditor.getValue(), is(Level.GOLD));
     }
-    
+
     @Test
     public void 숫자변환() throws Exception {
-        //when
+        // when
         levelPropertyEditor.setValue(Level.SILVER);
-        
-        //then
+
+        // then
         assertThat(levelPropertyEditor.getAsText(), is("2"));
     }
 }

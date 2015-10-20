@@ -49,7 +49,8 @@ public class TypicalControllerTest {
     @Test
     public void testHelloWorldMethod() throws Exception {
         mockMvc.perform(get("/")).andExpect(handler().handlerType(TypicalController.class))
-                .andExpect(handler().methodName("helloWorld")).andExpect(content().string("Hello, Spring 4.x web application"));
+                .andExpect(handler().methodName("helloWorld"))
+                .andExpect(content().string("Hello, Spring 4.x web application"));
     }
 
     @Test

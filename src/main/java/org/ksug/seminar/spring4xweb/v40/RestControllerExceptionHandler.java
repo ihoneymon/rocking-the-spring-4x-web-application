@@ -37,7 +37,7 @@ public class RestControllerExceptionHandler {
         private HttpStatus status;
         private String message;
     }
-    
+
     public static class RestControllerException extends Exception {
         public RestControllerException(String msg) {
             super(msg);

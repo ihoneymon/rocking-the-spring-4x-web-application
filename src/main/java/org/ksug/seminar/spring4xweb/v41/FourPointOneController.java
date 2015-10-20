@@ -63,10 +63,10 @@ public class FourPointOneController {
         input.ifPresent(value -> model.addAttribute("input", value));
         return ResponseEntity.ok(model);
     }
-    
-    @RequestMapping(value="/model-attribute/method-argument")
+
+    @RequestMapping(value = "/model-attribute/method-argument")
     public ResponseEntity useMethodArgument(@ModelAttribute("rest") Rest rest, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().build();
         } else {
             return ResponseEntity.ok(rest);

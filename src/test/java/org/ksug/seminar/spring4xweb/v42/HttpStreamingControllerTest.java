@@ -1,5 +1,6 @@
-package org.ksug.seminar.spring4xweb.v40;
+package org.ksug.seminar.spring4xweb.v42;
 
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -20,7 +21,7 @@ import org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class EchoControllerTest {
+public class HttpStreamingControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -33,8 +34,7 @@ public class EchoControllerTest {
     }
 
     @Test
-    public void testEcho() throws Exception {
-        mockMvc.perform(get("/stomp/echo")).andExpect(handler().handlerType(SockJsHttpRequestHandler.class))
-                .andExpect(status().isOk());
+    public void testResponseBodyEmmiter() throws Exception {
+        mockMvc.perform(get("/v42/events"));
     }
 }
