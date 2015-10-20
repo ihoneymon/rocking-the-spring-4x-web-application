@@ -1,6 +1,11 @@
 package org.ksug.seminar.spring4xweb.v42;
 
 import java.io.IOException;
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
@@ -14,7 +19,7 @@ public class HttpStreamingServiceImpl implements HttpStreamingService {
             @Override
             public void run() {
                 try {
-                    emitter.send("Hello, KSUG.");
+                    emitter.send(new Date());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -26,9 +31,8 @@ public class HttpStreamingServiceImpl implements HttpStreamingService {
             @Override
             public void run() {
                 try {
-                    emitter.send("Hello, honeymon.");
+                    emitter.send(new Message("Hello, KSUG"));
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -36,5 +40,12 @@ public class HttpStreamingServiceImpl implements HttpStreamingService {
         sendToHoneymon.start();
         Thread.sleep(1000);
         emitter.complete();
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Message {
+        private String content;
     }
 }
