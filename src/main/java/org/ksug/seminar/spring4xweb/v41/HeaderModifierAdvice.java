@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+/**
+ * {@link RestController @RestController}에 응답몸체에 헤더를 추가하는 예제
+ * 
+ * @author honeymon
+ *
+ */
 @ControllerAdvice(annotations = { RestController.class })
 public class HeaderModifierAdvice implements ResponseBodyAdvice<Object> {
 

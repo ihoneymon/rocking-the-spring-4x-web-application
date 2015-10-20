@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
  * 4.0 이전 @ControllerAdvice
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @ControllerAdvice
-public class BeforeGlobalExceptionHandler {
+public class BeforeGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(GlobalException.class)
     public ModelAndView defaultErorHandler(HttpServletRequest req, Exception e) throws Exception {
@@ -30,6 +31,8 @@ public class BeforeGlobalExceptionHandler {
     }
 
     public static class GlobalException extends Exception {
+        private static final long serialVersionUID = 895362567863801024L;
+
         public GlobalException(String msg) {
             super(msg);
         }

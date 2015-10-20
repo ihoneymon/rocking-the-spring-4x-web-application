@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter
 
 @RestController
 @RequestMapping("/v42")
-public class HttpStreamingController {
+public class ResponseBodyEmitterController {
 
     @Autowired
     private HttpStreamingService httpStreamingService;
