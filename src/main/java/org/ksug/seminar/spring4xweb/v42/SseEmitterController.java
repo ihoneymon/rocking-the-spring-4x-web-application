@@ -1,6 +1,6 @@
 package org.ksug.seminar.spring4xweb.v42;
 
-import static org.springframework.web.servlet.mvc.method.annotation.SseEmitter.*;
+import static org.springframework.web.servlet.mvc.method.annotation.SseEmitter.event;
 
 import java.io.IOException;
 import java.util.Date;
@@ -9,11 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-@Controller
+@RestController
 @RequestMapping("/v42")
 public class SseEmitterController {
 
