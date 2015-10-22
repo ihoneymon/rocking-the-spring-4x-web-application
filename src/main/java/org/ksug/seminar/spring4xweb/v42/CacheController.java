@@ -17,4 +17,9 @@ public class CacheController {
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(0, TimeUnit.SECONDS).cachePublic().noTransform())
                 .build();
     }
+
+    @RequestMapping("/cache-control2")
+    public ResponseEntity cacheController2() {
+        return ResponseEntity.ok().cacheControl(CacheControl.maxAge(1, TimeUnit.SECONDS).cachePrivate()).build();
+    }
 }

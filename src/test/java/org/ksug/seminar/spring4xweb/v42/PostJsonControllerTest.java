@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 
-@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -47,7 +46,7 @@ public class PostJsonControllerTest {
     public void testPostJsonRequestMappingMetaAnnotationUse() throws Exception {
         mockMvc.perform(
                 post("/v42/post-json").accept(MediaType.APPLICATION_JSON_VALUE).contentType(
-                        MediaType.APPLICATION_JSON_VALUE)).andExpect(status().is(HttpStatus.CREATED.value()))
+                        MediaType.APPLICATION_JSON_VALUE)).andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.name", is("KSUG")));
     }
 }

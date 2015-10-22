@@ -26,6 +26,7 @@ public class HttpStreamingServiceImpl implements HttpStreamingService {
             }
         });
         sendToKSUG.start();
+        sleep(5);
 
         Thread sendToHoneymon = new Thread(new Runnable() {
             @Override
@@ -38,8 +39,17 @@ public class HttpStreamingServiceImpl implements HttpStreamingService {
             }
         });
         sendToHoneymon.start();
-        Thread.sleep(1000);
+        sleep(5);
         emitter.complete();
+    }
+    
+    private static void sleep(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        }
+        catch (InterruptedException ex) {
+            // ignore
+        }
     }
 
     @Data

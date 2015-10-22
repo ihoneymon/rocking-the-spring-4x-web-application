@@ -21,10 +21,11 @@ public class StreamingResponseBodyController {
     @RequestMapping("/stream-events")
     public StreamingResponseBody handle() {
         return os -> {
-            for (int i=1; i <= 10; i++) {
+            for (int i=1; i <= 20; i++) {
                 String line = String.valueOf(i) + "\n";
                 os.write(line.getBytes(Charset.forName("UTF-8")));
                 os.flush();
+                sleep(1);
                 log.debug("Wrote value: " + i);
             }
         };
