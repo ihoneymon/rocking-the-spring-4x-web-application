@@ -18,11 +18,14 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 public class SseEmitterController {
 
     @RequestMapping("/sse-events")
-    public SseEmitter handle() throws IOException {
+    public SseEmitter handle() throws IOException, InterruptedException {
         SseEmitter sseEmitter = new SseEmitter();
         sseEmitter.send(event().name("message").data(new Message("Hello, KSUG")));
+        Thread.sleep(1000);
         sseEmitter.send(event().name("greeting").data(new Greeting("Hello, Honeymon")));
+        Thread.sleep(1000);
         sseEmitter.send(event().name("date").data(new Date()));
+        Thread.sleep(1000);
         sseEmitter.complete();
         return sseEmitter;
     }

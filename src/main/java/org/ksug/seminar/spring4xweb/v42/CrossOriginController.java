@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CrossOriginController {
 
     @CrossOrigin("http://ksug.org")
-    @RequestMapping("/greeting")
-    public HelloWorld greeting(HelloWorld hello) {
+    @RequestMapping("/corss-origin")
+    public HelloWorld crossOrigin(HelloWorld hello) {
         return hello;
     }
 }
