@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>KSUG: JSONP view</title>
+<script>
+function funcionCall(data) {
+	console.log(data.name);
+	console.log(data.comment);
+	console.log("--------------");''
+}
+</script>
+</head>
+<body>
+	<h1>JSONP</h1>
+<script type="application/javascript"
+	src="http://localhost:8080/v41/jsonp?callback=funcionCall"></script>
+</body>
+</html>
