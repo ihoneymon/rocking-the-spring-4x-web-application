@@ -21,6 +21,7 @@ Spring 4.x Web application Overview
 # 3. 발표자료
 * 정리문서: [Spring 4.x Web application overview](https://www.dropbox.com/s/3i09r1gmnhmwqid/20151024_rocking-the-spring-4x-for-web.md?dl=0)
 * 슬라이드: [Spring 4.x Web Application Overview](http://www.slideshare.net/ihoneymon/spring-4x-web-application)
+  - [PDF](./20151024 Spring 4.x Web Application Overview.pdf)
 
 # 4. 참고자료
 * [Spring Framework - wikipedia](https://en.wikipedia.org/wiki/Spring_Framework)
