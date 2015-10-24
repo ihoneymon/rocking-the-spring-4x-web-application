@@ -28,11 +28,13 @@ public class EchoControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
+                .build();
     }
 
     @Test
     public void testEcho() throws Exception {
-        mockMvc.perform(get("/stomp/echo")).andExpect(status().is2xxSuccessful());
+        mockMvc.perform(get("/stomp/echo")).andExpect(
+                status().is2xxSuccessful());
     }
 }

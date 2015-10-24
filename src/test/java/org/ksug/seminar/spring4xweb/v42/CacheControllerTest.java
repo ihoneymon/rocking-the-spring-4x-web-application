@@ -28,13 +28,15 @@ public class CacheControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
+                .build();
     }
 
     @Test
     public void testCacheControl() throws Exception {
         mockMvc.perform(get("/v42/cache-control")).andExpect(
-                header().string("Cache-Control", "max-age=0, no-transform, public"));
+                header().string("Cache-Control",
+                        "max-age=0, no-transform, public"));
     }
 
 }

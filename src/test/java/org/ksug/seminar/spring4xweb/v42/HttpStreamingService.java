@@ -14,5 +14,6 @@ public interface HttpStreamingService {
      * @throws IOException
      * @throws InterruptedException
      */
-    void handle(ResponseBodyEmitter emitter) throws IOException, InterruptedException;
+    void handle(ResponseBodyEmitter emitter) throws IOException,
+            InterruptedException;
 }

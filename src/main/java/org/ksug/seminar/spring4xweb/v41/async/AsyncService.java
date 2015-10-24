@@ -19,13 +19,16 @@ public class AsyncService {
 
     @PostConstruct
     public void setUp() {
-        executorService = new ConcurrentTaskExecutor(Executors.newFixedThreadPool(10));
+        executorService = new ConcurrentTaskExecutor(
+                Executors.newFixedThreadPool(10));
     }
 
-    public ListenableFuture<Map<String, String>> execute(String id) throws InterruptedException {
+    public ListenableFuture<Map<String, String>> execute(String id)
+            throws InterruptedException {
         return executorService.submitListenable(() -> {
             Thread.sleep(2000);
-            return ImmutableMap.of("id", id, "thread", Thread.currentThread().toString());
+            return ImmutableMap.of("id", id, "thread", Thread.currentThread()
+                    .toString());
         });
     }
 

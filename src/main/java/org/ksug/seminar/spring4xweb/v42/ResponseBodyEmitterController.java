@@ -15,7 +15,8 @@ public class ResponseBodyEmitterController {
     private HttpStreamingService httpStreamingService;
 
     @RequestMapping("/events")
-    public ResponseBodyEmitter handler() throws IOException, InterruptedException {
+    public ResponseBodyEmitter handler() throws IOException,
+            InterruptedException {
         ResponseBodyEmitter emitter = new ResponseBodyEmitter();
         httpStreamingService.handle(emitter);
         return emitter;

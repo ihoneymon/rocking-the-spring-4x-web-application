@@ -20,23 +20,25 @@ public class SseEmitterController {
     @RequestMapping("/sse-events")
     public SseEmitter handle() throws IOException, InterruptedException {
         SseEmitter sseEmitter = new SseEmitter();
-        sseEmitter.send(event().name("message").data(new Message("Hello, KSUG")));
+        sseEmitter.send(event().name("message")
+                .data(new Message("Hello, KSUG")));
         Thread.sleep(1000);
-        sseEmitter.send(event().name("greeting").data(new Greeting("Hello, Honeymon")));
+        sseEmitter.send(event().name("greeting").data(
+                new Greeting("Hello, Honeymon")));
         Thread.sleep(1000);
         sseEmitter.send(event().name("date").data(new Date()));
         Thread.sleep(1000);
         sseEmitter.complete();
         return sseEmitter;
     }
-    
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Message {
         private String content;
     }
-    
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

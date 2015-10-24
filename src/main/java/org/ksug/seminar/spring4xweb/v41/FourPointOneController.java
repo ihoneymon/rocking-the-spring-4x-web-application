@@ -46,8 +46,9 @@ public class FourPointOneController {
     public ResponseEntity create() {
         Rest savedRest = repository.saveAndFlush(new Rest("builder-create"));
 
-        UriComponents uriComponents = MvcUriComponentsBuilder.fromMethodName(FourPointOneController.class, "getRest",
-                savedRest.getId()).build();
+        UriComponents uriComponents = MvcUriComponentsBuilder.fromMethodName(
+                FourPointOneController.class, "getRest", savedRest.getId())
+                .build();
         return ResponseEntity.created(uriComponents.toUri()).build();
     }
 
@@ -59,13 +60,15 @@ public class FourPointOneController {
 
     @ModelAttribute
     @RequestMapping(value = "/model-attribtue")
-    public ResponseEntity<Model> addModelAttribtue(@RequestParam Optional<String> input, Model model) {
+    public ResponseEntity<Model> addModelAttribtue(
+            @RequestParam Optional<String> input, Model model) {
         input.ifPresent(value -> model.addAttribute("input", value));
         return ResponseEntity.ok(model);
     }
 
     @RequestMapping(value = "/model-attribute/method-argument")
-    public ResponseEntity useMethodArgument(@ModelAttribute("rest") Rest rest, BindingResult bindingResult) {
+    public ResponseEntity useMethodArgument(@ModelAttribute("rest") Rest rest,
+            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().build();
         } else {
@@ -74,7 +77,8 @@ public class FourPointOneController {
     }
 
     @RequestMapping(value = "/optional", method = GET, produces = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity optionalRequestMapping(@RequestParam(value = "some-date") Optional<String> someDate) {
+    public ResponseEntity optionalRequestMapping(
+            @RequestParam(value = "some-date") Optional<String> someDate) {
         StringBuilder sb = new StringBuilder("some-date: ");
         someDate.ifPresent(value -> sb.append(value.toString()));
         return ResponseEntity.ok(sb.toString());

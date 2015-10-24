@@ -26,9 +26,12 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/error/default").setViewName("static/templates/error/default.html");
-        registry.addViewController("/error/400").setViewName("static/templates/error/400.html");
-        registry.addViewController("/error/404").setViewName("static/templates/error/404.html");
+        registry.addViewController("/error/default").setViewName(
+                "static/templates/error/default.html");
+        registry.addViewController("/error/400").setViewName(
+                "static/templates/error/400.html");
+        registry.addViewController("/error/404").setViewName(
+                "static/templates/error/404.html");
         registry.addViewController("/home").setViewName("redirect:/");
     }
 
@@ -38,10 +41,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         configurer.setUseSuffixPatternMatch(true)
-                  .setUseTrailingSlashMatch(false)
-                  .setUseRegisteredSuffixPatternMatch(true)
-                  .setPathMatcher(pathMatcher())
-                  .setUrlPathHelper(urlPathHelper());
+                .setUseTrailingSlashMatch(false)
+                .setUseRegisteredSuffixPatternMatch(true)
+                .setPathMatcher(pathMatcher())
+                .setUrlPathHelper(urlPathHelper());
     }
 
     @Bean
@@ -63,9 +66,11 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         registry.addMapping("/**");
 
         // 상세설정
-        registry.addMapping("/api/**").allowedOrigins("http://domain2.com").allowedMethods("PUT", "DELETE")
-                .allowedHeaders("header1", "header2", "header3").exposedHeaders("header1", "header2")
-                .allowCredentials(false).maxAge(3600);
+        registry.addMapping("/api/**").allowedOrigins("http://domain2.com")
+                .allowedMethods("PUT", "DELETE")
+                .allowedHeaders("header1", "header2", "header3")
+                .exposedHeaders("header1", "header2").allowCredentials(false)
+                .maxAge(3600);
     }
 
     @Override
@@ -87,7 +92,8 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
          * 
          * 자바스크립트는 순서가 중요하기 때문에 다음과 같은 형태로 가져다 쓸 수밖에 없게 된다.
          */
-        configurer.setScripts("/static/js/polyfill.js", "/META-INF/resources/webjars/handlebars/4.0.2/handlebars.js",
+        configurer.setScripts("/static/js/polyfill.js",
+                "/META-INF/resources/webjars/handlebars/4.0.2/handlebars.js",
                 "/static/js/render.js");
         configurer.setRenderFunction("render");
         /**
@@ -110,12 +116,18 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         if (!registry.hasMappingForPattern("/webjars/**")) {
-            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/resources/webjars/")
-                    .setCacheControl(CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic());
+            registry.addResourceHandler("/webjars/**")
+                    .addResourceLocations("classpath:/resources/webjars/")
+                    .setCacheControl(
+                            CacheControl.maxAge(1, TimeUnit.HOURS)
+                                    .cachePublic());
         }
         if (!registry.hasMappingForPattern("/**")) {
-            registry.addResourceHandler("/**").addResourceLocations("classpath:/static")
-                    .setCacheControl(CacheControl.maxAge(0, TimeUnit.SECONDS).cachePublic());
+            registry.addResourceHandler("/**")
+                    .addResourceLocations("classpath:/static")
+                    .setCacheControl(
+                            CacheControl.maxAge(0, TimeUnit.SECONDS)
+                                    .cachePublic());
         }
     }
 }

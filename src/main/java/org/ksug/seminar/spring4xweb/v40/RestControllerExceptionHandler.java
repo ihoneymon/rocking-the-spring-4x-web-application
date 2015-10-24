@@ -26,7 +26,8 @@ public class RestControllerExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ApiError exception(Exception e, HttpServletRequest request) {
-        return new ApiError(request.getRequestURI(), HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        return new ApiError(request.getRequestURI(),
+                HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
     }
 
     @Data

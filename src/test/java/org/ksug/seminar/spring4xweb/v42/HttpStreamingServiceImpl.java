@@ -14,7 +14,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter
 public class HttpStreamingServiceImpl implements HttpStreamingService {
 
     @Override
-    public void handle(ResponseBodyEmitter emitter) throws IOException, InterruptedException {
+    public void handle(ResponseBodyEmitter emitter) throws IOException,
+            InterruptedException {
         Thread sendToKSUG = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -42,12 +43,11 @@ public class HttpStreamingServiceImpl implements HttpStreamingService {
         sleep(5);
         emitter.complete();
     }
-    
+
     private static void sleep(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
-        }
-        catch (InterruptedException ex) {
+        } catch (InterruptedException ex) {
             // ignore
         }
     }

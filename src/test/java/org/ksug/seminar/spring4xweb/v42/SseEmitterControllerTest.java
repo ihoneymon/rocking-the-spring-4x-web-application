@@ -29,12 +29,14 @@ public class SseEmitterControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
+                .build();
     }
 
     @Test
     public void testSseEmitter() throws Exception {
-        mockMvc.perform(get("/v42/sse-events")).andExpect(content().contentType("text/event-stream"))
+        mockMvc.perform(get("/v42/sse-events"))
+                .andExpect(content().contentType("text/event-stream"))
                 .andExpect(header().string("Content-Type", "text/event-stream"));
     }
 }

@@ -9,6 +9,7 @@ public class OccurExceptionController {
 
     @RequestMapping("/occur-exception/package")
     public String occurExceptionOnPackage() throws Exception {
-        throw new Exception(OccurExceptionController.class.getPackage().getName());
+        throw new Exception(OccurExceptionController.class.getPackage()
+                .getName());
     }
 }

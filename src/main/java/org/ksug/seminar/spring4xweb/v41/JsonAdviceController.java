@@ -13,9 +13,9 @@ public class JsonAdviceController {
     public @ResponseBody HelloWorld jsonp() {
         return new HelloWorld("KSUG", "Hello");
     }
-    
+
     @RequestMapping("/jsonp-view")
-    public String jsonView(){
+    public String jsonView() {
         return "static/templates/jsonp-view.html";
     }
 }

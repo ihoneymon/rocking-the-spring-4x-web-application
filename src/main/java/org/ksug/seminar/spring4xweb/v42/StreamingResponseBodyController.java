@@ -21,7 +21,7 @@ public class StreamingResponseBodyController {
     @RequestMapping("/stream-events")
     public StreamingResponseBody handle() {
         return os -> {
-            for (int i=1; i <= 10; i++) {
+            for (int i = 1; i <= 10; i++) {
                 String line = String.valueOf(i) + "\n";
                 os.write(line.getBytes(Charset.forName("UTF-8")));
                 os.flush();
@@ -34,8 +34,7 @@ public class StreamingResponseBodyController {
     private static void sleep(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
-        }
-        catch (InterruptedException ex) {
+        } catch (InterruptedException ex) {
             // ignore
         }
     }

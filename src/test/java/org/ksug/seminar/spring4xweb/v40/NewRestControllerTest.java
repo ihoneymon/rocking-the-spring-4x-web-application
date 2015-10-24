@@ -34,15 +34,21 @@ public class NewRestControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
+                .build();
     }
 
     @Test
     public void testHelloRestController() throws Exception {
-        mockMvc.perform(get("/rest")).andExpect(handler().handlerType(NewRestController.class))
-                .andExpect(handler().methodName("helloRestController")).andExpect(status().isOk())
-                .andExpect(jsonPath("$.comment", is("Hello"))).andExpect(jsonPath("$.target", is("KSUG")))
-                .andExpect(header().string("KSUG", is("Modern Java web application with Spring")));
+        mockMvc.perform(get("/rest"))
+                .andExpect(handler().handlerType(NewRestController.class))
+                .andExpect(handler().methodName("helloRestController"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.comment", is("Hello")))
+                .andExpect(jsonPath("$.target", is("KSUG")))
+                .andExpect(
+                        header().string("KSUG",
+                                is("Modern Java web application with Spring")));
     }
 
     /**
@@ -53,9 +59,11 @@ public class NewRestControllerTest {
      */
     @Test
     public void testOccurException() throws Exception {
-        mockMvc.perform(get("/rest/occur-exception")).andExpect(handler().handlerType(NewRestController.class))
+        mockMvc.perform(get("/rest/occur-exception"))
+                .andExpect(handler().handlerType(NewRestController.class))
                 .andExpect(handler().methodName("occurException"))
-                .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()))
+                .andExpect(
+                        status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()))
                 .andExpect(jsonPath("$.url", is("/rest/occur-exception")))
                 .andExpect(jsonPath("$.status", is("INTERNAL_SERVER_ERROR")));
     }

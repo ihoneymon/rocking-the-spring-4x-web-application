@@ -29,21 +29,25 @@ public class FourPointZeroTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
+                .build();
     }
 
     @Test
     public void testErrorDefault() throws Exception {
-        mockMvc.perform(get("/error/default")).andExpect(view().name(is("static/templates/error/default.html")));
+        mockMvc.perform(get("/error/default")).andExpect(
+                view().name(is("static/templates/error/default.html")));
     }
 
     @Test
     public void testError400() throws Exception {
-        mockMvc.perform(get("/error/400")).andExpect(view().name(is("static/templates/error/400.html")));
+        mockMvc.perform(get("/error/400")).andExpect(
+                view().name(is("static/templates/error/400.html")));
     }
 
     @Test
     public void testError404() throws Exception {
-        mockMvc.perform(get("/error/404")).andExpect(view().name(is("static/templates/error/404.html")));
+        mockMvc.perform(get("/error/404")).andExpect(
+                view().name(is("static/templates/error/404.html")));
     }
 }

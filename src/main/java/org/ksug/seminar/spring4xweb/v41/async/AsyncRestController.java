@@ -24,7 +24,8 @@ public class AsyncRestController {
     private AsyncService asyncService;
 
     @RequestMapping("/async/{id}")
-    public ListenableFuture<Map<String, String>> async(@PathVariable String id) throws InterruptedException {
+    public ListenableFuture<Map<String, String>> async(@PathVariable String id)
+            throws InterruptedException {
         log.info("start");
         ListenableFuture<Map<String, String>> result = asyncService.execute(id);
         log.info("end");

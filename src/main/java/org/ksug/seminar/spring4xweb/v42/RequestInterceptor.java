@@ -26,19 +26,23 @@ public class RequestInterceptor implements RequestBodyAdvice {
     }
 
     @Override
-    public Object handleEmptyBody(Object body, HttpInputMessage inputMessage, MethodParameter parameter,
-            Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
+    public Object handleEmptyBody(Object body, HttpInputMessage inputMessage,
+            MethodParameter parameter, Type targetType,
+            Class<? extends HttpMessageConverter<?>> converterType) {
         return body;
     }
 
     @Override
-    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType,
-            Class<? extends HttpMessageConverter<?>> converterType) throws IOException {
+    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage,
+            MethodParameter parameter, Type targetType,
+            Class<? extends HttpMessageConverter<?>> converterType)
+            throws IOException {
         return inputMessage;
     }
 
     @Override
-    public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType,
+    public Object afterBodyRead(Object body, HttpInputMessage inputMessage,
+            MethodParameter parameter, Type targetType,
             Class<? extends HttpMessageConverter<?>> converterType) {
         return body;
     }

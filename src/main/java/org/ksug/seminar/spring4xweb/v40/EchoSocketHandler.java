@@ -12,8 +12,10 @@ public class EchoSocketHandler extends TextWebSocketHandler {
      * Echo를 붙이는 간단한 소켓
      */
     @Override
-    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        TextMessage echoMessage = new TextMessage("Echo: " + message.getPayload());
+    protected void handleTextMessage(WebSocketSession session,
+            TextMessage message) throws Exception {
+        TextMessage echoMessage = new TextMessage("Echo: "
+                + message.getPayload());
         session.sendMessage(echoMessage);
     }
 }

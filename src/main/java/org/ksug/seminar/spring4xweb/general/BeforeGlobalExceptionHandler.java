@@ -16,15 +16,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  *
  */
 @ControllerAdvice
-public class BeforeGlobalExceptionHandler extends ResponseEntityExceptionHandler {
+public class BeforeGlobalExceptionHandler extends
+        ResponseEntityExceptionHandler {
 
     @ExceptionHandler(GlobalException.class)
-    public ModelAndView defaultErorHandler(HttpServletRequest req, Exception e) throws Exception {
-        if (null != AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class)) {
+    public ModelAndView defaultErorHandler(HttpServletRequest req, Exception e)
+            throws Exception {
+        if (null != AnnotationUtils.findAnnotation(e.getClass(),
+                ResponseStatus.class)) {
             throw e;
         }
 
-        ModelAndView mav = new ModelAndView("/static/templates/error/default.html");
+        ModelAndView mav = new ModelAndView(
+                "/static/templates/error/default.html");
         mav.addObject("url", req.getRequestURI());
         mav.addObject("message", e.getMessage());
         return mav;

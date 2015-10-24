@@ -33,8 +33,10 @@ public class TypicalController {
     }
 
     @RequestMapping("/")
-    public @ResponseBody String helloWorld(@ModelAttribute("helloModelAttribute") HelloWorld helloWorld) {
-        return String.format("%s, %s", helloWorld.getComment(), helloWorld.getName());
+    public @ResponseBody String helloWorld(
+            @ModelAttribute("helloModelAttribute") HelloWorld helloWorld) {
+        return String.format("%s, %s", helloWorld.getComment(),
+                helloWorld.getName());
     }
 
     @RequestMapping("/occur-exception")

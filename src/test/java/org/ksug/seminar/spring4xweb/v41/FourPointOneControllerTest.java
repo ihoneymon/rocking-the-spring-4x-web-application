@@ -1,6 +1,7 @@
 package org.ksug.seminar.spring4xweb.v41;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -44,8 +45,17 @@ public class FourPointOneControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
-                .alwaysExpect(handler().handlerType(FourPointOneController.class)).build();
+        mockMvc = MockMvcBuilders
+                .webAppContextSetup(wac)
+                .alwaysDo(print())
+                .alwaysExpect(
+                        handler().handlerType(FourPointOneController.class))
+                .build();
+    }
+    
+    @Test
+    public void testMvcUriComponentsBuilder() throws Exception {
+        
     }
 
     /**
@@ -55,8 +65,10 @@ public class FourPointOneControllerTest {
      */
     @Test
     public void testCreateMethod() throws Exception {
-        mockMvc.perform(post("/v41/create")).andExpect(handler().methodName("create"))
-                .andExpect(status().is(HttpStatus.CREATED.value())).andExpect(status().is2xxSuccessful());
+        mockMvc.perform(post("/v41/create"))
+                .andExpect(handler().methodName("create"))
+                .andExpect(status().is(HttpStatus.CREATED.value()))
+                .andExpect(status().is2xxSuccessful());
     }
 
     /**
@@ -69,21 +81,25 @@ public class FourPointOneControllerTest {
         String someDate = "2014-04-16";
 
         mockMvc.perform(get("/v41/optional").param("some-date", someDate))
-                .andExpect(handler().methodName("optionalRequestMapping")).andExpect(status().is2xxSuccessful())
+                .andExpect(handler().methodName("optionalRequestMapping"))
+                .andExpect(status().is2xxSuccessful())
                 .andExpect(content().string("some-date: " + someDate));
     }
 
     @Test
     public void test메서드에선언된ModelAttribute_파라미터가없는경우() throws Exception {
         // given
-        mockMvc.perform(get("/v41//model-attribtue")).andExpect(status().is2xxSuccessful())
+        mockMvc.perform(get("/v41//model-attribtue"))
+                .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$.rest.name", is("v41")));
     }
 
     @Test
     public void test메서드에선언된ModelAttribute_파라미터가존재하는경우() throws Exception {
-        mockMvc.perform(get("/v41//model-attribtue").param("input", "input")).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$.rest.name", is("v41"))).andExpect(jsonPath("$.input", is("input")));
+        mockMvc.perform(get("/v41//model-attribtue").param("input", "input"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$.rest.name", is("v41")))
+                .andExpect(jsonPath("$.input", is("input")));
     }
 
     /**
@@ -94,7 +110,8 @@ public class FourPointOneControllerTest {
      */
     @Test
     public void testModelAttribute를_메서드인자로_선언한_것에_대한검증확인() throws Exception {
-        mockMvc.perform(get("/v41/model-attribute/method-argument")).andExpect(status().is2xxSuccessful());
+        mockMvc.perform(get("/v41/model-attribute/method-argument")).andExpect(
+                status().is2xxSuccessful());
     }
 
 }

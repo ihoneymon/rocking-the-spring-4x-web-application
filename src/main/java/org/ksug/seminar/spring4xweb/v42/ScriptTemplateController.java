@@ -11,7 +11,8 @@ public class ScriptTemplateController {
     @RequestMapping("/script-template")
     public ModelAndView viewScriptTemplate() {
         ModelAndView mav = new ModelAndView("static/templates/hello.html");
-        mav.addObject("title", "KSUG").addObject("body", "Moden Java web application with Spring");
+        mav.addObject("title", "KSUG").addObject("body",
+                "Moden Java web application with Spring");
         return mav;
     }
 }

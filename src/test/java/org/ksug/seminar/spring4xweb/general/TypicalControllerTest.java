@@ -35,7 +35,8 @@ public class TypicalControllerTest {
     @Before
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
-                .alwaysExpect(handler().handlerType(TypicalController.class)).build();
+                .alwaysExpect(handler().handlerType(TypicalController.class))
+                .build();
     }
 
     @Test
@@ -47,24 +48,31 @@ public class TypicalControllerTest {
         dataBinder.registerCustomEditor(Level.class, new LevelPropertyEditor());
 
         // then
-        assertThat(dataBinder.convertIfNecessary("1", Level.class), is(Level.BRONZE));
+        assertThat(dataBinder.convertIfNecessary("1", Level.class),
+                is(Level.BRONZE));
     }
 
     @Test
     public void testHelloWorldMethod() throws Exception {
-        mockMvc.perform(get("/")).andExpect(handler().methodName("helloWorld"))
-                .andExpect(content().string("Hello, Spring 4.x web application"));
+        mockMvc.perform(get("/"))
+                .andExpect(handler().methodName("helloWorld"))
+                .andExpect(
+                        content().string("Hello, Spring 4.x web application"));
     }
 
     @Test
     public void testOccurIllegalStateException() throws Exception {
-        mockMvc.perform(get("/occur-exception")).andExpect(handler().methodName("occurIllegalStateException"))
-                .andExpect(status().isOk()).andExpect(content().string("IllegalStateException handle!!"));
+        mockMvc.perform(get("/occur-exception"))
+                .andExpect(handler().methodName("occurIllegalStateException"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("IllegalStateException handle!!"));
     }
 
     @Test
     public void testHandleExceptionByController() throws Exception {
-        mockMvc.perform(get("/handle-global-exception")).andExpect(handler().methodName("handleGlobalException"))
-                .andExpect(model().attributeExists("url")).andExpect(model().attributeExists("message"));
+        mockMvc.perform(get("/handle-global-exception"))
+                .andExpect(handler().methodName("handleGlobalException"))
+                .andExpect(model().attributeExists("url"))
+                .andExpect(model().attributeExists("message"));
     }
 }

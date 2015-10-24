@@ -24,7 +24,6 @@ public class ModelAttributeController {
         return new Boo(foo);
     }
 
-    
     @RequestMapping("/model-attribute")
     public String test() {
         return "static/templates/model-attribute.html";

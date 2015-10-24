@@ -16,8 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class PackageExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView defaultErorHandler(HttpServletRequest req, Exception e) throws Exception {
-        ModelAndView mav = new ModelAndView("static/templates/error/default.html");
+    public ModelAndView defaultErorHandler(HttpServletRequest req, Exception e)
+            throws Exception {
+        ModelAndView mav = new ModelAndView(
+                "static/templates/error/default.html");
         mav.addObject("url", req.getRequestURI());
         mav.addObject("message", e.getMessage());
         mav.addObject("handler", this.getClass().getName());

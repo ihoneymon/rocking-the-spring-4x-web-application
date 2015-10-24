@@ -29,13 +29,18 @@ public class ScriptTemplateControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).alwaysDo(print())
-                .alwaysExpect(handler().handlerType(ScriptTemplateController.class)).build();
+        mockMvc = MockMvcBuilders
+                .webAppContextSetup(wac)
+                .alwaysDo(print())
+                .alwaysExpect(
+                        handler().handlerType(ScriptTemplateController.class))
+                .build();
     }
 
     @Test
     public void testScriptTemplate예제() throws Exception {
-        mockMvc.perform(get("/v42/script-template")).andExpect(handler().methodName("viewScriptTemplate"))
+        mockMvc.perform(get("/v42/script-template"))
+                .andExpect(handler().methodName("viewScriptTemplate"))
                 .andExpect(model().attributeExists("title", "body"));
     }
 }
